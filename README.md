@@ -1,6 +1,6 @@
 # VollMed API
 
-Bem-vindo ao repositório da **VollMed API**! Esta aplicação é uma API RESTful para **gerenciamento de informações de clínicas médicas**, incluindo pacientes, médicos e agendamentos.  
+ **VollMed API**! Esta aplicação é uma API RESTful para **gerenciamento de informações de clínicas médicas**, incluindo pacientes, médicos e agendamentos.  
 
 Este projeto foi adaptado de um curso da **Alura** e está sendo utilizado como parte do meu aprendizado em **Kubernetes**. Ele serve como um estudo prático para consolidar conceitos de containerização e orquestração de aplicações.
 
