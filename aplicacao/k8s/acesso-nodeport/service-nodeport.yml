@@ -1,0 +1,25 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: nodeport-vollmed
+# spec:
+#   type: NodePort
+#   selector: # definindo qual pod vai esta usando este serviço
+#     app: vollmed
+#   ports:
+#     - port: 3000
+#       targetPort: 3000
+#       nodePort: 30000 # essa porta vai ser acessada fora do cluster (30000 - 32767)
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer-vollmed
+spec:
+  type: LoadBalancer
+  selector: # definindo qual pod vai esta usando este serviço
+    app: vollmed
+  ports:
+    - port: 3000
+      targetPort: 3000
+      #nodePort: 30000 # essa porta vai ser acessada fora do cluster (30000 - 32767)

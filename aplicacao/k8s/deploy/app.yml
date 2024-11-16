@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vollmed
+  labels:
+    app: vollmed
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: vollmed
+  template:
+    metadata:
+      labels:
+        app: vollmed
+    spec:
+      containers:
+        - name: vollmed-api 
+          image: crisdockerz/vollmed:1 # imagem de api da vollmed
+          ports:
+          - containerPort: 80
+          envFrom: 
+            - configMapRef: # referenciando o configmap dados
+                name: dados 
+            - secretRef:
+               name: senhas # referenciado a secret senhas
+      livenessProbe: 
+        httpGet: # tipo de requisição
+          path: /paciente # a requisição que o kubernetes vai fazer 
+          port: 3000
+        initialDelaySeconds: 15 # aguardando 15 segundos pro container terminar de subir para que o livenessProbe comece a trabalhar 
+        periodSeconds: 3 # a cada 3 segundos o kubernetes vai fazer uma requisição para /paciente
+        
